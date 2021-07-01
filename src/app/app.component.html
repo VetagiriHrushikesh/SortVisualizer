@@ -1,0 +1,22 @@
+<div class="array-container">
+  <div class="array-bar"
+  [ngStyle]="{backgroundColor:data.active?'blue':'rgb(173, 182, 255)'}"
+  [ngStyle]="{backgroundColor:data.iteration?'yellow':'rgb(173, 182, 255)'}"
+  [ngStyle]="{backgroundColor:data.swapping?'red':'rgb(173, 182, 255)'}"
+  [ngStyle]="{backgroundColor:data.finalrun?'white':'rgb(173, 182, 255)'}"
+  *ngFor="let data of dataBars?.reverse()"
+  [style.height.px]="data.value*7"
+  >
+    <p class="data-value">{{data.value}}</p>
+  </div>
+</div>
+<app-header-controls [data]="message"
+                     (newArrayEvent)="receiveMessage($event)"
+                     (ascendingArrayEvent)="ascendingArray($event)"
+                     (descendingArrayEvent)="descendingArray($event)"
+                     (playAlgorithmSelectedEvent)="playAlgorithmSelected($event)"
+                     (refreshArrayEvent) = "refreshArray($event)"
+                    (speedValueEvent) = "speedValue($event)"
+                     (sizeValueEvent) = "sizeValue($event)"
+                     >
+                    </app-header-controls>

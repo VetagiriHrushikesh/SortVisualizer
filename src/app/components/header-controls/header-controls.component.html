@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="card">
+    <div class="rearrange">
+    <input class="custom-rearrange" type="text" #arrayList >
+    <button mat-button (click) = "sendMessage()">Arrange</button>
+    <div class="rearrange-buttons">
+      <button mat-button>NearlySorted Array</button>
+      <button mat-button (click)="ascendingArray()">Ascending Array</button>
+      <button mat-button (click)="descendingArray()">Descending Array</button>
+    </div>
+    </div>
+  </div>
+    <div class="card">
+      <mat-slider class="player"
+        color="warn">
+    </mat-slider>
+      <div class="progress-bar">
+        <div class="speed">
+          <mat-icon matTooltip="Increase Speed">speed</mat-icon>
+          <mat-slider
+          min = "1"
+          max = "1000"
+          color="warn"
+          (input)="onSpeedChange($event)"
+          >
+        </mat-slider>
+        </div>
+        <button mat-fab color="white" (click)="onRefreshClick()" >
+          <mat-icon>refresh</mat-icon>
+        </button>
+        <button mat-fab color="primary" (click)="onPlayClick()" >
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+        <button mat-fab color="warn" >
+          <mat-icon>pause</mat-icon>
+        </button>
+        <div class="size">
+          <mat-icon matTooltip="Increase Array">equalizer</mat-icon>
+          <mat-slider
+          min = "5"
+          max = "20"
+          color="warn"
+          (input)="onSizeChange($event)"
+          >
+        </mat-slider>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+          <button *ngFor="let sort of availableSortingAlg; let l = last" mat-button
+           [class.active]="sort.active"  [disabled]="sort.active || ($start | async)"
+           (click)="setSorter(sort.alg)"><small>{{ sort.name }}</small></button>
+  </div>
+
+</div>

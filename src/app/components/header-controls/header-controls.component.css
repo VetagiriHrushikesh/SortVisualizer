@@ -1,0 +1,56 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  width: 100%;
+  bottom: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.card {
+  flex: 50%;
+  margin: 10px;
+  padding: 10px;
+  color: black;
+  border-radius: 30px;
+  /* background: rgba(0, 0, 0, 0.5); */
+  background-color: rgb(255, 210, 210);
+  border: 1px dotted white;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+.rearrange-buttons{
+  padding: 15px;
+}
+.custom-rearrange
+{
+  width: 70%;
+  padding: 10px;
+  margin-right: 8px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+}
+.player{
+  width: 400px;
+}
+.rearrange-array{
+  padding: 10px;
+}
+.progress-bar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column;
+  }
+}
+.active
+{
+  border: 1px solid black;
+  text-transform: uppercase;
+  text-decoration: line-through;
+}
