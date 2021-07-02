@@ -20,6 +20,9 @@ export class AppComponent {
   maximumValueInGraph: number = 50;
   maxArraySize = 20;
   message: GraphStructure[] = [];
+  maxDelay = 500;
+  delayScalingRate = 200;
+  delayToken: DelayToken = new DelayToken();
 
 
 
@@ -49,7 +52,9 @@ export class AppComponent {
   }
 
   speedValue($event: any){
-    console.log($event);
+    var delay = this.maxDelay * Math.exp(-$event / this.delayScalingRate);
+    console.log(delay);
+    this.delayToken.set(delay);
   }
 
 
@@ -61,10 +66,9 @@ export class AppComponent {
   }
 
   async playAlgorithmSelected($event: any){
-    // $event.forEach((q: any) => ({ ...q, active: false }))
     switch($event){
       case 0:
-        await selectionSort(this.dataBars);
+        await selectionSort(this.dataBars, this.delayToken);
         break;
       case 1:
             console.log("Insertion Sort Selected");

@@ -55,9 +55,8 @@ export class HeaderControlsComponent implements OnChanges {
   constructor() {}
   ngOnChanges(changes: SimpleChanges): void {
     this.valueNew = this.data;
-    var dummyArray: number[] = [];
     console.log(this.valueNew);
-}
+  }
 
 
   onSpeedChange(event: MatSliderChange) {

@@ -18,9 +18,11 @@
         <div class="speed">
           <mat-icon matTooltip="Increase Speed">speed</mat-icon>
           <mat-slider
-          min = "1"
-          max = "1000"
+          min="0"
+          max="1000"
+          step="1"
           color="warn"
+          value = "1000"
           (input)="onSpeedChange($event)"
           >
         </mat-slider>

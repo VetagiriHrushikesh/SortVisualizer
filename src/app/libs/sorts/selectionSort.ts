@@ -1,7 +1,9 @@
 import { GraphStructure } from "../interfaces/GraphStructure";
+import { DelayToken } from "../interfaces/token";
+import { sleep } from "./sleep";
 
 
-export async function selectionSort(data:GraphStructure[])
+export async function selectionSort(data:GraphStructure[], delayToken: DelayToken)
 {
   var minimum_index;
   var i;
@@ -11,22 +13,24 @@ export async function selectionSort(data:GraphStructure[])
     var dataFirst = data[minimum_index];
     dataFirst.active = true;
 
-    await new Promise<void>((resolve) =>
-    setTimeout(() => {
-    resolve();
-    }, 300)
-    );
+    // await new Promise<void>((resolve) =>
+    // setTimeout(() => {
+    // resolve();
+    // }, 300)
+    // );
+    await sleep(delayToken.delay);
     console.log("First Minimum " + data[minimum_index].value)
 
     var j;
     for(j = i + 1; j <= data.length - 1; j++)
     {
       data[j].iteration = true;
-      await new Promise<void>((resolve) =>
-      setTimeout(() => {
-        resolve();
-      }, 300)
-      );
+      // await new Promise<void>((resolve) =>
+      // setTimeout(() => {
+      //   resolve();
+      // }, 300)
+      // );
+      await sleep(delayToken.delay);
       if(data[j].value < data[minimum_index].value)
       {
         if(minimum_index != i)
@@ -40,11 +44,12 @@ export async function selectionSort(data:GraphStructure[])
     }
     data[minimum_index].swapping = true;
     data[i].swapping = true;
-    await new Promise<void>((resolve) =>
-    setTimeout(() => {
-      resolve();
-    }, 700)
-    );
+    // await new Promise<void>((resolve) =>
+    // setTimeout(() => {
+    //   resolve();
+    // }, 700)
+    // );
+    await sleep(delayToken.delay);
     let temp = data[minimum_index].value;
     data[minimum_index].value = data[i].value;
     data[i].value = temp;
